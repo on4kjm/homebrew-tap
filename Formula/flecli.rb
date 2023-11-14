@@ -9,17 +9,17 @@ class Flecli < Formula
   license "MIT"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/on4kjm/FLEcli/releases/download/v0.1.6/FLEcli_ 0.1.6_macOS_64-bit.tar.gz", using: CurlDownloadStrategy
-      sha256 "66722f0804e97b53c75ba60da915feb99bad540cd188a6f973b8639709a436d7"
+    if Hardware::CPU.arm?
+      url "https://github.com/on4kjm/FLEcli/releases/download/v0.1.6/FLEcli_ 0.1.6_macOS_arm64.tar.gz", using: CurlDownloadStrategy
+      sha256 "0c5a6137ee9c3436e73bae04b896a47221f88dc25a77c261cfe5773b6338d39c"
 
       def install
         bin.install "FLEcli"
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/on4kjm/FLEcli/releases/download/v0.1.6/FLEcli_ 0.1.6_macOS_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "513a7bdd42d9214d8c9ff74336fc961cb307a77c952cc07c79915b34eeefdfef"
+    if Hardware::CPU.intel?
+      url "https://github.com/on4kjm/FLEcli/releases/download/v0.1.6/FLEcli_ 0.1.6_macOS_64-bit.tar.gz", using: CurlDownloadStrategy
+      sha256 "29ac4fdd2f4b9abb20619911e9735582719f3a5b44ba7f3d6dd681e05b2c9bec"
 
       def install
         bin.install "FLEcli"
@@ -28,9 +28,17 @@ class Flecli < Formula
   end
 
   on_linux do
+    if Hardware::CPU.intel?
+      url "https://github.com/on4kjm/FLEcli/releases/download/v0.1.6/FLEcli_ 0.1.6_linux_64-bit.tar.gz", using: CurlDownloadStrategy
+      sha256 "199ed4f5df2552d24b843ad56a13373cdab8df5dda27f4b409fdf0a3a921b3ba"
+
+      def install
+        bin.install "FLEcli"
+      end
+    end
     if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
       url "https://github.com/on4kjm/FLEcli/releases/download/v0.1.6/FLEcli_ 0.1.6_linux_arm.tar.gz", using: CurlDownloadStrategy
-      sha256 "4d9fd19c2b25f33743e64db23f10a7e2bc0d09a02a4e8531a9e20af6973d94ab"
+      sha256 "bafd707aed803c9c3bae1282fbbb519cb0362b95fcd12b31f3b071cea20dcc14"
 
       def install
         bin.install "FLEcli"
@@ -38,15 +46,7 @@ class Flecli < Formula
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/on4kjm/FLEcli/releases/download/v0.1.6/FLEcli_ 0.1.6_linux_arm64.tar.gz", using: CurlDownloadStrategy
-      sha256 "1213af538f043ce5dc0ac649bb68ab56c7eeb04791ed61f3950114b3fda52993"
-
-      def install
-        bin.install "FLEcli"
-      end
-    end
-    if Hardware::CPU.intel?
-      url "https://github.com/on4kjm/FLEcli/releases/download/v0.1.6/FLEcli_ 0.1.6_linux_64-bit.tar.gz", using: CurlDownloadStrategy
-      sha256 "0d7c7be854bc407edada8d6a1a1ab2edd2864275d627a9580e8c437eaaac572e"
+      sha256 "df4610f079edf04f66601644a4729eeb1d2dc2a95b143fb99996a89867ff7ca8"
 
       def install
         bin.install "FLEcli"
